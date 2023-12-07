@@ -43,11 +43,35 @@ const cache = new Map<string, Block[]>()
 
 export interface Options {
   blocks?: {
+    /**
+     * Create virtual files for each `<style>` block
+     * @default false
+     */
     styles?: boolean
+    /**
+     * Enable custom blocks
+     * Pass an string array to specify custom block types, or `true` to enable all custom blocks
+     * @default false
+     */
+    customBlocks?: boolean | string[]
+    /**
+     * Create virtual files for each `<template>` block
+     * Generally not recommended, as `eslint-plugin-vue` handles it
+     * @default false
+     */
     template?: boolean
+    /**
+     * Create virtual files for each `<script>` block
+     * Generally not recommended, as `eslint-plugin-vue` handles it
+     * @default false
+     */
     script?: boolean
+    /**
+     * Create virtual files for each `<script setup>` block
+     * Generally not recommended, as `eslint-plugin-vue` handles it
+     * @default false
+     */
     scriptSetup?: boolean
-    customBlocks?: boolean
   }
   /**
    * Default language for each block type
@@ -73,6 +97,7 @@ function processor(options: Options = {}): Linter.Processor {
         style: 'css',
         template: 'html',
         script: 'js',
+        i18n: 'json',
         ...options.defaultLanguage,
       }
 
@@ -98,8 +123,13 @@ function processor(options: Options = {}): Linter.Processor {
 
       if (options.blocks?.styles)
         descriptor.styles.forEach(style => pushBlock(style))
-      if (options.blocks?.customBlocks)
-        descriptor.customBlocks.forEach(block => pushBlock(block))
+      if (options.blocks?.customBlocks) {
+        descriptor.customBlocks.forEach((block) => {
+          if (Array.isArray(options.blocks?.customBlocks) && !options.blocks?.customBlocks.includes(block.type))
+            return
+          pushBlock(block)
+        })
+      }
       if (options.blocks?.template && descriptor.template)
         pushBlock(descriptor.template)
       if (options.blocks?.script && descriptor.script)
