@@ -52,13 +52,8 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
-    "eslint": "^8.50.0",
-    "vue": "^3.3.0"
-  },
-  "peerDependenciesMeta": {
-    "vue": {
-      "optional": true
-    }
+    "@vue/compiler-sfc": "^3.3.0",
+    "eslint": "^8.50.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.3.4",

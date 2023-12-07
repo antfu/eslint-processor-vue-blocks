@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
-import type { SFCBlock } from 'vue/compiler-sfc'
-import { parse } from 'vue/compiler-sfc'
+import type { SFCBlock } from '@vue/compiler-sfc'
+import { parse } from '@vue/compiler-sfc'
 
 interface Block extends Linter.ProcessorFile {
   wrapper: TextWrapper
