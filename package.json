@@ -1,7 +1,7 @@
 {
   "name": "eslint-processor-vue-blocks",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@8.11.0",
   "description": "Create virtual files in ESLint for each Vue SFC block, so that you can lint them individually.",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
