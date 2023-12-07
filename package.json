@@ -55,6 +55,11 @@
     "eslint": "^8.50.0",
     "vue": "^3.3.0"
   },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.3.4",
     "@antfu/ni": "^0.21.12",
