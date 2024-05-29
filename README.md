@@ -51,7 +51,7 @@ export default [
   },
   {
     files: ['**/*.css'],
-    // ... now you can lint CSS files as will as the <style> blocks in Vue SFCs
+    // ... now you can lint CSS files as well as the <style> blocks in Vue SFCs
   }
 ]
 ```
