@@ -20,9 +20,9 @@ In ESLint flat config:
 
 ```js
 // eslint.config.js
+import { mergeProcessors } from 'eslint-merge-processors'
 import pluginVue from 'eslint-plugin-vue'
 import processorVueBlocks from 'eslint-processor-vue-blocks'
-import { mergeProcessors } from 'eslint-merge-processors'
 
 export default [
   {

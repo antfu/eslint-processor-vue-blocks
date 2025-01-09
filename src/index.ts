@@ -1,5 +1,5 @@
-import type { Linter } from 'eslint'
 import type { SFCBlock } from '@vue/compiler-sfc'
+import type { Linter } from 'eslint'
 import { parse } from '@vue/compiler-sfc'
 
 interface Block extends Linter.ProcessorFile {
@@ -109,7 +109,7 @@ function processor(options: Options = {}): Linter.Processor {
         const lang = block.lang || defaultLanguage[block.type] || block.type
         let startOffset = wrapper.getIndex(block.loc.start.line, block.loc.start.column)
         let content = block.content
-        content = content.replace(/^([\s\n]*)/g, (match) => {
+        content = content.replace(/^(\s*)/g, (match) => {
           startOffset += match.length
           return ''
         })
